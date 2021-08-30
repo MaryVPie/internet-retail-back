@@ -1,8 +1,21 @@
 const router = require('express').Router();
 const { Category, Product } = require('../../models');
 
-// The `/api/categories` endpoint
-
+/**
+ * @swagger
+ * /api/categories:
+ *  get: 
+ *    tags: 
+ *      - categories
+ *    description: Gets all categories
+ *    produces:
+ *      - application/json
+ *    responses:
+ *      200:
+ *        description: Successfully got all the categories
+ *      500:
+ *        description: Failed to get categories
+ */
 router.get('/', async (req, res) => {
   // find all categories
   // be sure to include its associated Products
@@ -22,6 +35,26 @@ router.get('/', async (req, res) => {
   }
 });
 
+/**
+ * @swagger
+ * /api/categories/{id}:
+ *  get: 
+ *    tags: 
+ *      - categories
+ *    description: Gets a single category
+ *    parameters:
+ *      - in: path
+ *        name: id
+ *        required: true
+ *        description: requested category id 
+ *    produces:
+ *      - application/json
+ *    responses:
+ *      200:
+ *        description: Successfully got a single category
+ *      500:
+ *        description: Failed to get a single category
+ */
 router.get('/:id', (req, res) => {
   // find one category by its `id` value
   // be sure to include its associated Products
@@ -45,11 +78,62 @@ router.get('/:id', (req, res) => {
     });
 });
 
+/**
+ * @swagger
+ * /api/categories:
+ *  post: 
+ *    tags: 
+ *      - categories
+ *    description: Create a single category
+ *    parameters:
+ *      - in: body
+ *        type: object
+ *        name: payload
+ *        required: true
+ *        description: category name provided
+ *        properties:
+ *          category_name:
+ *            type: string
+ *            description: category name provided
+ *            required: true
+ *            example: bla1
+ *    produces:
+ *      - application/json
+ *    responses:
+ *      201:
+ *        description: Successfully created a single category
+ *      500:
+ *        description: Failed to create a single category
+ */
 router.post('/', async (req, res) => {
   // create a new category
   await CreateCat(req, res);
 });
 
+/**
+ * @swagger
+ * /api/categories/{id}:
+ *  put: 
+ *    tags: 
+ *      - categories
+ *    description: If id was provided updates existing category by that id, if not creates a new a single category
+ *    parameters:
+ *      - in: path
+ *        name: id
+ *        required: true
+ *        description: requested category id 
+ *    produces:
+ *      - application/json
+ *    responses:
+ *      200:
+ *        description: Successfully updated a single category
+ *      201:
+ *        description: Successfully created a single category
+ *      500:
+ *        description: Failed to create/update a single category
+ *      404:
+ *        description: No Category found with this id
+ */
 router.put('/:id?', async (req, res) => {
   console.log(req.params.id );
   if (req.params.id == null || req.params.id == '') {
@@ -59,11 +143,53 @@ router.put('/:id?', async (req, res) => {
   }
 });
 
+/**
+ * @swagger
+ * /api/categories/{id}:
+ *  patch: 
+ *    tags: 
+ *      - categories
+ *    description: Update a single category
+ *    parameters:
+ *      - in: path
+ *        name: id
+ *        required: true
+ *        description: requested category id  
+ *    produces:
+ *      - application/json
+ *    responses:
+ *      200:
+ *        description: Successfully updated a single category
+ *      500:
+ *        description: Failed to update a single category
+ */
 router.patch('/:id', async (req, res) => {
   // update a category by its `id` value
   await UpdateCat(req, res);
 });
 
+/**
+ * @swagger
+ * /api/categories/{id}:
+ *  delete: 
+ *    tags: 
+ *      - categories
+ *    description: Delete a single category
+ *    parameters:
+ *      - in: path
+ *        name: id
+ *        required: true
+ *        description: requested category id 
+ *    produces:
+ *      - application/json
+ *    responses:
+ *      200:
+ *        description: Successfully deleted a single category
+ *      404:
+ *        description: No Category found with this id
+ *      500:
+ *        description: Failed to delete a single category
+ */
 router.delete('/:id', (req, res) => {
   // delete a category by its `id` value
   Category.destroy({

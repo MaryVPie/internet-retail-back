@@ -1,7 +1,21 @@
 const router = require('express').Router();
 const { Product, Category, Tag, ProductTag } = require('../../models');
-// The `/api/products` endpoint
 
+/**
+ * @swagger
+ * /api/products:
+ *  get: 
+ *    tags: 
+ *      - products
+ *    description: Gets all products
+ *    produces:
+ *      - application/json
+ *    responses:
+ *      200:
+ *        description: Successfully got all the products
+ *      500:
+ *        description: Failed to get products
+ */
 // get all products
 router.get('/', async (req, res) => {
   // find all products
@@ -21,6 +35,26 @@ router.get('/', async (req, res) => {
   }
 });
 
+/**
+ * @swagger
+ * /api/products/{id}:
+ *  get: 
+ *    tags: 
+ *      - products
+ *    description: Gets a single product
+ *    parameters:
+ *      - in: path
+ *        name: id
+ *        required: true
+ *        description: requested product id 
+ *    produces:
+ *      - application/json
+ *    responses:
+ *      200:
+ *        description: Successfully got a single product
+ *      500:
+ *        description: Failed to get a single product
+ */
 // get one product
 router.get('/:id', (req, res) => {
   // find a single product by its `id`
@@ -45,6 +79,33 @@ router.get('/:id', (req, res) => {
     });
 });
 
+/**
+ * @swagger
+ * /api/products:
+ *  post: 
+ *    tags: 
+ *      - products
+ *    description: Create a single product
+ *    parameters:
+ *      - in: body
+ *        type: object
+ *        name: payload
+ *        required: true
+ *        description: product name provided
+ *        properties:
+ *          product_name:
+ *            type: string
+ *            description: product name provided
+ *            required: true
+ *            example: bla1
+ *    produces:
+ *      - application/json
+ *    responses:
+ *      200:
+ *        description: Successfully created a single product
+ *      500:
+ *        description: Failed to create a single product
+ */
 // create new product
 router.post('/', async (req, res) => {
 
@@ -60,6 +121,30 @@ router.post('/', async (req, res) => {
   
 });
 
+/**
+ * @swagger
+ * /api/products/{id}:
+ *  put: 
+ *    tags: 
+ *      - products
+ *    description: If id was provided updates existing product by that id, if not creates a new a single product
+ *    parameters:
+ *      - in: path
+ *        name: id
+ *        required: true
+ *        description: requested products id 
+ *    produces:
+ *      - application/json
+ *    responses:
+ *      200:
+ *        description: Successfully updated a single product
+ *      201:
+ *        description: Successfully created a single product
+ *      500:
+ *        description: Failed to create/update a single product
+ *      404:
+ *        description: No product found with this id
+ */
 // update product
 router.put('/:id', (req, res) => {
   // update product data
@@ -105,6 +190,28 @@ router.put('/:id', (req, res) => {
     });
 });
 
+/**
+ * @swagger
+ * /api/products/{id}:
+ *  delete: 
+ *    tags: 
+ *      - products
+ *    description: Delete a single product
+ *    parameters:
+ *      - in: path
+ *        name: id
+ *        required: true
+ *        description: requested product id 
+ *    produces:
+ *      - application/json
+ *    responses:
+ *      200:
+ *        description: Successfully deleted a single product
+ *      404:
+ *        description: No product found with this id
+ *      500:
+ *        description: Failed to delete a single product
+ */
 router.delete('/:id', (req, res) => {
   // delete one product by its `id` value
   Product.destroy({
