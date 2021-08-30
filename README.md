@@ -12,57 +12,43 @@ I WANT a back end for my e-commerce website that uses the latest technologies
 SO THAT my company can compete with other e-commerce companies
 ```
 
-## Mock-Ups
 
-The following animation shows the application's GET routes to return all categories, all products, and all tags being tested in Insomnia Core:
+## Work done screenshots of the page using Swagger UI
 
-![In Insomnia Core, the user tests “GET tags,” “GET Categories,” and “GET All Products.”.](./Assets/13-orm-homework-demo-01.gif)
+API definitions with the visual documentation for back end implementation:
 
-The following animation shows the application's GET routes to return a single category, a single product, and a single tag being tested in Insomnia Core:
+| <img src="Assets/main.PNG" width="550" height="450" alt="Main page using Swagger to show the routes"/> |
+| --- | 
+|  Main Page | 
 
-![In Insomnia Core, the user tests “GET tag by id,” “GET Category by ID,” and “GET One Product.”](./Assets/13-orm-homework-demo-02.gif)
+| <img src="Assets/AllCategories.PNG" width="450" height="300" alt="GET routes to return all categories"/>| <img src="Assets/AllProducts.PNG" width="450" height="300" alt="GET routes to return all products"/> | <img src="Assets/AllTags.PNG" width="450" height="300" alt="GET routes to return all tags"/> |
+| --- | --- | --- |
+|  Work done All Categories | Work done All Products | Work done All Tags |
 
-The following animation shows the application's POST, PUT, and DELETE routes for categories being tested in Insomnia Core:
-
-![In Insomnia Core, the user tests “DELETE Category by ID,” “CREATE Category,” and “UPDATE Category.”](./Assets/13-orm-homework-demo-03.gif)
-
-## Work done screenshots of the page
-
-| <img src="assets/images/pixels.jpg" width="450" height="300" alt=""/>| <img src="./Assets/10-object-oriented-programming-homework-demo.png" width="450" height="300" alt=""/> |
-| --- | --- |
-|  Work done 1 | Work done 2 |
-
+| <img src="Assets/ACategory.PNG" width="450" height="300" alt="GET routes to return a single category"/>| <img src="Assets/AProduct.PNG" width="450" height="300" alt="GET routes to return a single product"/> | <img src="Assets/ATag.PNG" width="450" height="300" alt="GET routes to return a single tag"/> |
+| --- | --- | --- |
+|  Work done a single Category | Work done a single Product | Work done a single Tag |
 
 ## What's included
 
-You’ll configure a working Express.js API to use Sequelize to interact with a MySQL database.
-
-- index.html:
-    - optimized for the accessibility needs
-
-- styles.css
-  - optimized styles
-  - comments about how they are styling respective elements groups
-  
-- script.js:
-  - working with objects
-  - optimized code using functions
+Configuring a working Express.js API to use Sequelize to interact with a MySQL database.
 
 - Technologies/Frameworks/Resources:
-  - JQuery
-  - server-side APIs
-  - materializecss
-  - google fonts
+  - Express.js API
+  - Sequelize.js
+  - MySQL
+  - Swagger packages (swagger-jsdoc, swagger-ui-express)
+  - Insomnia
 
 
 
 ## Links to Review
 
 
-* The walkthrough video that demonstrates the functionality of the application:
+* The walkthrough video that demonstrates the functionality of the application (using Insomnia): https://drive.google.com/file/d/1-4BHLNf_XycBjhu7DQkZ-NIY3mZAb1PC/view
 
 * The URL of the GitHub repository: https://github.com/MaryVPie/internet-retail-back
-  
+ 
 
 ## From developer
 Made with :heart: by [MaryVPie](https://github.com/MaryVPie).

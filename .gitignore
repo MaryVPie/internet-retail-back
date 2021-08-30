@@ -1,5 +1,5 @@
 ## Acceptance Criteria
-
+node_modules/
 ```md
 GIVEN a functional Express.js API
 WHEN I add my database name, MySQL username, and MySQL password to an environment variable file
