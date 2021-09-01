@@ -98,6 +98,21 @@ router.get('/:id', (req, res) => {
  *            description: product name provided
  *            required: true
  *            example: bla1
+ *          price:
+ *            type: number
+ *            description: product price
+ *            required: true
+ *            example: 100.1 
+ *          stock:
+ *            type: number
+ *            description: items in stock 
+ *            required: false
+ *            example: 1
+ *          tagIds:
+ *            type: array
+ *            description: product price
+ *            required: true
+ *            example: [] 
  *    produces:
  *      - application/json
  *    responses:
@@ -237,7 +252,7 @@ async function CreateProduct(req, res) {
   try {
     let product = await Product.create(req.body);
 
-    if (req.body.tagIds.length) {
+    if (req.body.tagIds != null && req.body.tagIds.length) {
         const productTagIdArr = req.body.tagIds.map((tag_id) => {
           return {
             product_id: product.id,
@@ -250,8 +265,8 @@ async function CreateProduct(req, res) {
       res.status(200).json(product);
 
   } catch (error) {
-      console.log(err);
-      res.status(400).json(err);
+      console.log(error);
+      res.status(400).json(error);
   }
  
 }
