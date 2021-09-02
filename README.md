@@ -45,7 +45,7 @@ Configuring a working Express.js API to use Sequelize to interact with a MySQL d
 ## Links to Review
 
 
-* The walkthrough video that demonstrates the functionality of the application (using Insomnia): https://drive.google.com/file/d/1-4BHLNf_XycBjhu7DQkZ-NIY3mZAb1PC/view
+* The walkthrough video that demonstrates the functionality of the application (using Insomnia): https://drive.google.com/file/d/1eHRpchbALXTtLpCs0WVA7sYa615hidPA/view
 
 * The URL of the GitHub repository: https://github.com/MaryVPie/internet-retail-back
  
