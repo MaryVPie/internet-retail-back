@@ -190,24 +190,28 @@ router.patch('/:id', async (req, res) => {
  *      500:
  *        description: Failed to delete a single category
  */
-router.delete('/:id', (req, res) => {
+router.delete('/:id', async (req, res) => {
   // delete a category by its `id` value
-  Category.destroy({
-    where: {
-      id: req.params.id
-    }
-  })
-    .then(categoryData => {
-      if (!categoryData) {
-        res.status(404).json({ message: 'No Category found with this id' });
-        return;
+  try {
+    let linkedProducts = await Product.findAll({ where: { category_id: req.params.id } });
+    let selectedProductIds = linkedProducts.map(product=>product.id);
+
+    Product.destroy({ where: { id: selectedProductIds } });
+    let categoryData = await Category.destroy({
+      where: {
+        id: req.params.id
       }
-      res.json(categoryData);
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
     });
+    
+    if (!categoryData) {
+      res.status(404).json({ message: 'No Category found with this id' });
+      return;
+    }
+    res.json(categoryData);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json(error);
+  }
 });
 
 async function UpdateCat(req, res) {
